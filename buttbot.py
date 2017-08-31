@@ -46,7 +46,7 @@ def message_hook(bot, channel, sender, message):
         probability = randint(0,7)
     print(probability)
     if probability == 1:
-        bot.message(channel, buttify_sentence(message))
+        bot.message(channel, sender + ": " + buttify_sentence(message))
 
 @bot.command('buttify')
 def command_version(bot, channel, sender, args):
