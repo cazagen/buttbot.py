@@ -39,11 +39,14 @@ def buttify_sentence(words):
 @bot.hook()
 def message_hook(bot, channel, sender, message):
     if sender in bot.config['Buttbot']['friends'].split():
-        probability = randint(0,10)
+        print("FRIEND")
+        probability = randint(0,35)
     elif sender in bot.config['Buttbot']['enemies'].split():
-        probability = randint(0,5)
+        print("ENEMY")
+        probability = randint(0,25)
     else:
-        probability = randint(0,7)
+        print("RANDOM")
+        probability = randint(0,30)
     print(probability)
     if probability == 1:
         bot.message(channel, sender + ": " + buttify_sentence(message))
@@ -52,3 +55,18 @@ def message_hook(bot, channel, sender, message):
 def command_version(bot, channel, sender, args):
     newbuttword = buttify_sentence(args)
     bot.message(channel, newbuttword)
+
+@bot.command('enemies')
+def is_enemy(bot, channel, sender, args):
+    if len(args) > 0:
+        bot.message(channel, "This command doesn't require any arguments")
+    else:
+        bot.message(channel, "My enemies are: " + bot.config['Buttbot']['enemies'])
+
+@bot.command('friends')
+def is_friend(bot, channel, sender, args):
+    if len(args) > 0:
+        bot.message(channel, "This command doesn't require any arguments")
+    else:
+        bot.message(channel, "My friends are: " + bot.config['Buttbot']['friends'])
+       
