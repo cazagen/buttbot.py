@@ -60,13 +60,16 @@ def command_version(bot, channel, sender, args):
 def is_enemy(bot, channel, sender, args):
     if len(args) > 0:
         bot.message(channel, "This command doesn't require any arguments")
-    else:
+    elif len(bot.config['Buttbot']['enemies'].split()) > 1:
         bot.message(channel, "My enemies are: " + bot.config['Buttbot']['enemies'])
+    else:
+        bot.message(channel, "My only enemy is " + bot.config['Buttbot']['enemies'])
 
 @bot.command('friends')
 def is_friend(bot, channel, sender, args):
     if len(args) > 0:
         bot.message(channel, "This command doesn't require any arguments")
-    else:
+    elif len(bot.config['Buttbot']['friends'].split()) > 1:
         bot.message(channel, "My friends are: " + bot.config['Buttbot']['friends'])
-       
+    else:
+        bot.message(channel, "My only friend is " + bot.config['Buttbot']['friends'])
