@@ -40,13 +40,13 @@ def buttify_sentence(words):
 def message_hook(bot, channel, sender, message):
     if sender in bot.config['Buttbot']['friends'].split():
         print("FRIEND")
-        probability = randint(0,35)
+        probability = randint(0,110)
     elif sender in bot.config['Buttbot']['enemies'].split():
         print("ENEMY")
-        probability = randint(0,25)
+        probability = randint(0,90)
     else:
         print("RANDOM")
-        probability = randint(0,30)
+        probability = randint(0,100)
     print(probability)
     if probability == 1:
         bot.message(channel, sender + ": " + buttify_sentence(message))
@@ -58,18 +58,20 @@ def command_version(bot, channel, sender, args):
 
 @bot.command('enemies')
 def is_enemy(bot, channel, sender, args):
-    if len(args) > 0:
-        bot.message(channel, "This command doesn't require any arguments")
-    elif len(bot.config['Buttbot']['enemies'].split()) > 1:
-        bot.message(channel, "My enemies are: " + bot.config['Buttbot']['enemies'])
-    else:
-        bot.message(channel, "My only enemy is " + bot.config['Buttbot']['enemies'])
+    if sender == bot.config['System']['owner']:    
+        if len(args) > 0:
+            bot.message(channel, "This command doesn't require any arguments")
+        elif len(bot.config['Buttbot']['enemies'].split()) > 1:
+            bot.message(channel, "My enemies are: " + bot.config['Buttbot']['enemies'])
+        else:
+            bot.message(channel, "My only enemy is " + bot.config['Buttbot']['enemies'])
 
 @bot.command('friends')
 def is_friend(bot, channel, sender, args):
-    if len(args) > 0:
-        bot.message(channel, "This command doesn't require any arguments")
-    elif len(bot.config['Buttbot']['friends'].split()) > 1:
-        bot.message(channel, "My friends are: " + bot.config['Buttbot']['friends'])
-    else:
-        bot.message(channel, "My only friend is " + bot.config['Buttbot']['friends'])
+    if sender == bot.config['System']['owner']:
+        if len(args) > 0:
+            bot.message(channel, "This command doesn't require any arguments")
+        elif len(bot.config['Buttbot']['friends'].split()) > 1:
+            bot.message(channel, "My friends are: " + bot.config['Buttbot']['friends'])
+        else:
+            bot.message(channel, "My only friend is " + bot.config['Buttbot']['friends'])
