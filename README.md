@@ -7,8 +7,8 @@ Add the following to your config.ini for buttbot to function
 
 ```
 [Buttbot]
-friends = [people to be targeted less often]
-enemies = [people to be targeted more often]
+friends = [space separated list of people to be targeted less often]
+enemies = [space separated list of people to be targeted more often]
 probability_friend = [integer]
 probability_enemy = [integer]
 probability_random = [integer]
