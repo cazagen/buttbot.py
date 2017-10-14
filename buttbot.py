@@ -40,13 +40,13 @@ def buttify_sentence(words):
 def message_hook(bot, channel, sender, message):
     if sender in bot.config['Buttbot']['friends'].split():
         print("FRIEND")
-        probability = randint(0,110)
+        probability = randint(0,int(bot.config['Buttbot']['probability_friend']))
     elif sender in bot.config['Buttbot']['enemies'].split():
         print("ENEMY")
-        probability = randint(0,90)
+        probability = randint(0,int(bot.config['Buttbot']['probability_enemy']))
     else:
         print("RANDOM")
-        probability = randint(0,100)
+        probability = randint(0,int(bot.config['Buttbot']['probability_random']))
     print(probability)
     if probability == 1:
         bot.message(channel, sender + ": " + buttify_sentence(message))
