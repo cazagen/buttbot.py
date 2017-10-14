@@ -1,11 +1,14 @@
 #!/usr/bin/env python
 
+import logging
 import math
 
 from random import randint
 from syllabipy.sonoripy import SonoriPy
 
 from ircbot import bot
+
+logger = logging.getLogger(__name__)
 
 def buttify(word):
     x = SonoriPy(word)
@@ -39,13 +42,13 @@ def buttify_sentence(words):
 @bot.hook()
 def message_hook(bot, channel, sender, message):
     if sender in bot.config['Buttbot']['friends'].split():
-        print("FRIEND")
+        logger.debug("FRIEND")
         probability = randint(0,int(bot.config['Buttbot']['probability_friend']))
     elif sender in bot.config['Buttbot']['enemies'].split():
-        print("ENEMY")
+        logger.debug("ENEMY")
         probability = randint(0,int(bot.config['Buttbot']['probability_enemy']))
     else:
-        print("RANDOM")
+        logger.debug("RANDOM")
         probability = randint(0,int(bot.config['Buttbot']['probability_random']))
     print(probability)
     if probability == 1:
