@@ -7,14 +7,17 @@ Add the following to your config.ini for buttbot to function
 
 ```
 [Buttbot]
-friends = [space separated list of people to be targeted less often]
-enemies = [space separated list of people to be targeted more often]
-probability_friend = [integer]
-probability_enemy = [integer]
-probability_random = [integer]
+friends = person1 person2 person3 
+enemies = person4 person5 person6 
+probability_friend = 110
+probability_enemy = 90
+probability_random = 100
 
 ```
+Friends are those less likely to be targeted.
+Enemies are those more likely to be targeted.
 
+The numbers in use for the probabilities are just what I like them to be, after fiddling with them for around a month in use
 
 # Extra dependencies
 syllabipy==0.2
