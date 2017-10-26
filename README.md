@@ -1,5 +1,7 @@
 # buttbot.py
 
+This is based on [Buttbot](https://github.com/ollien/buttbot)
+
 Intended for use as a plugin within [hreeder/botbot](https://github.com/hreeder/botbot)
 
 Add the following to your config.ini for buttbot to function
